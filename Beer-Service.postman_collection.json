@@ -1,65 +1,103 @@
 {
-	"info": {
-		"_postman_id": "9676eacc-d60c-4063-a088-67c33f6418c2",
-		"name": "Beer-Service",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "get_with_name",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8090/beer/order/Budweiser",
-					"host": [
-						"localhost"
-					],
-					"port": "8090",
-					"path": [
-						"beer",
-						"order",
-						"Budweiser"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "search_with_param_name",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": null
-			},
-			"response": []
-		},
-		{
-			"name": "search_with_param_price",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": null
-			},
-			"response": []
-		},
-		{
-			"name": "search_with_param_brewery",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": null
-			},
-			"response": []
-		},
-		{
-			"name": "createOrder",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": null
-			},
-			"response": []
-		}
-	]
+  "info": {
+    "_postman_id": "9676eacc-d60c-4063-a088-67c33f6418c2",
+    "name": "Beer-Service",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "get_with_name",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8090/beer/order/Budweiser",
+          "host": [
+            "localhost"
+          ],
+          "port": "8090",
+          "path": [
+            "beer",
+            "order",
+            "Budweiser"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "fail_get_with_name",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8090/beer/order/Budweiser",
+          "host": [
+            "localhost"
+          ],
+          "port": "8090",
+          "path": [
+            "beer",
+            "order",
+            "Budweiser"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "search_with_param_name",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": null
+      },
+      "response": []
+    },
+    {
+      "name": "fail_search_with_param_name",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": null
+      },
+      "response": []
+    },
+    {
+      "name": "search_with_param_price",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": null
+      },
+      "response": []
+    },
+    {
+      "name": "search_with_param_brewery",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": null
+      },
+      "response": []
+    },
+    {
+      "name": "createOrder",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": null
+      },
+      "response": []
+    },
+    {
+      "name": "fail_createOrder",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": null
+      },
+      "response": []
+    }
+  ]
 }
