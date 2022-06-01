@@ -17,7 +17,7 @@ resources:
             - READMe.md
             - HELP.md
             - .gitignore
-            - jenkins-pipeline-ci.yaml
+            - azuredevops-pipeline-ci.yaml
             - jenkins-pipeline-cd.yaml
 steps:
   - tasks: GradleBuild
@@ -48,7 +48,7 @@ steps:
     condition: and(ne(variables['Build.Reason'],'PullRequest')
     , eq(variables['Build.SourceBranch'],'refs/heads/main')
     )
-  - template: docker-build-push.yaml
+  - template: azuredevops-docker-build-push.yaml
     parameters:
       ImageName: beer-order-service
       AddImageTag: beer-order-service
