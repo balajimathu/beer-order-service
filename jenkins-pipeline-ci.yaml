@@ -1,5 +1,4 @@
 variables:
-  - name: Version.MajorMinor
 
 name: $(Version.MajorMinor).$(Version.Revision)
 
