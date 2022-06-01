@@ -1,0 +1,59 @@
+variables:
+  - name: beer-order-serice
+
+name: $(Version.MajorMinor).$(Version.Revision)
+
+resources:
+  repositories:
+    - repository: self
+      type: GitHub
+      name: balajimathu/beer-order-service
+      connection: balajimathu
+      pr:
+        branches:
+          include:
+            - main
+        paths:
+          exclude:
+            - READMe.md
+            - HELP.md
+            - .gitignore
+            - jenkins-pipeline-ci.yaml
+            - jenkins-pipeline-cd.yaml
+steps:
+  - tasks: GradleBuild
+    inputs:
+      workingdirectory: ''
+      gradleWrapperFiles: 'gradlew'
+      gradleOptions: '-Xmx3072m'
+      javaHomeOptions: "JDKVersion"
+      jdkVersionOption: '1.11'
+      publishJUnitResults: true
+      options: ''
+      testRunTitle: 'Unit-Tests-$(Build.Repository.Name)-$(Build.BuildNumber)'
+      testResultsFiles: '**/TEST-*.xml'
+      tasks: 'clean build'
+
+  - task: PublishBuildArtifact
+    condition: succeededOrFailed()
+    inputs:
+      pathToPublish: $(Build.SourcesDirectory)/build/reports/tests/test
+      artifactName: BuildOutputs
+
+  - task: PublishJaCoCoReports
+    inputs:
+      codeCoverageTool: 'JaCoCo'
+      summaryFileLocation: "$(Build.SourcesDirectory)/build/reports/jacoco/tests/jaCoCoReport.xml"
+      reportDirectory: "$(Build.SourcesDirectory)/build/reports/jacoco/test/html"
+  - task: BuildDockerImage
+    condition: and(ne(variables['Build.Reason'],'PullRequest')
+    , eq(variables['Build.SourceBranch'],'refs/heads/main')
+    )
+  - template: docker-build-push.yaml
+    parameters:
+      ImageName: beer-order-service
+      AddImageTag: beer-order-service
+      Registry: balajimathu
+      Namespace: balajimathu
+      Dockerfile: 'Dockerfile'
+      
