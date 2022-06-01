@@ -1,5 +1,5 @@
 variables:
-  - name: beer-order-serice
+  - name: Version.MajorMinor
 
 name: $(Version.MajorMinor).$(Version.Revision)
 
