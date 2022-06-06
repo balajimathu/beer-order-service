@@ -1,0 +1,17 @@
+steps:
+  - task: Docker
+    condition: ne(variables['Build.Reason'], 'PullRequest')
+    displayName: Build Docker Image For Beer Order Service
+    inputs:
+      command: build
+      repository: 'balajimathu/balajimathu/beer-order-service'
+      Dockerfile: 'Dockerfile'
+      tags: 'beer-order-service'
+  - task: Docker
+    condition: and (succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+    displayName: Push Docker Image For Beer Order Service
+    inputs:
+      command: push
+      repository: 'balajimathu/balajimathu/beer-order-service'
+      Dockerfile: 'Dockerfile'
+      tags: 'beer-order-service'

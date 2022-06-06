@@ -31,6 +31,8 @@ Please check the postman collection available in this folder
 ##### To create executable jar, execute below command 
 ./gradlew build
 ##### To compile and create docker Image
+./gradlew build docker
+OR 
 docker build -t beerOrderService:1 .
 ##### To run Docker container
 docker run -d --name beerOrderService -p 8090:8090 beerOrderService:1
